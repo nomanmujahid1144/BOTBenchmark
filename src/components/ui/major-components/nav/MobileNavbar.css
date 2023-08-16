@@ -1,0 +1,24 @@
+/* MobileNavbar.css */
+/* Animations for opening and closing the mobile menu */
+
+  
+  /* Add the transitions */
+  .main-menu {
+    transform: translateX(0);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .main-menu.mm-hidden {
+    transform: translateX(-100%);
+    animation: fadeOut 0.3s ease-in-out;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }

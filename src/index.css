@@ -1,0 +1,88 @@
+
+:root {
+  --overlay-loader: 0 0 0;
+}
+:root {
+  --loader-bg: rgb(var(--overlay-loader));
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: inline; /* or the default value 'inline-block', depending on your requirements */
+  vertical-align: baseline; /* or the default value 'baseline', depending on your requirements */
+}
+
+
+.slick-dots li button:before {
+  font-family: 'slick';
+  font-size: 13px !important;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: '•';
+  text-align: center;
+  opacity: .25;
+  color: #3578fa !important;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li button:hover, .slick-dots li button:focus {
+  outline: none;
+  color: #3578fa !important;;
+}
+
+
+/* For screen width 1300px and above */
+@media screen and (min-width: 1400px) {
+  .adjustWidth {
+    width: 432px; 
+  }
+}
+
+/* For screen width 1024px to 1299px */
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .adjustWidth {
+    width: 372px; /* Adjust the width as per your requirement */
+  }
+}
+
+/* For screen width 800px to 1023px */
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .adjustWidth {
+    width: 312px; /* Adjust the width as per your requirement */
+  }
+}
+
+/* For screen width 480px to 799px */
+@media screen and (min-width: 780px) and (max-width: 1000px) {
+  .adjustWidth {
+    width: 315px; /* Adjust the width as per your requirement */
+  }
+}
+
+/* For screen width 480px to 799px */
+@media screen and (min-width: 780px) {
+  .adjustWidth {
+    width: 315px; /* Adjust the width as per your requirement */
+  }
+}
+
+.marginTop {
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 990px) {
+  .marginTop {
+    margin-top: 100px;
+  }
+}
