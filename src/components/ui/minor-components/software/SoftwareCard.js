@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import StarRating from "../ratings/StarRating";
+import { toSnakeCase } from "../../../../constants/helperFunction";
 
 export const SoftwareCard = ({softwareId, softwareName, softwareLogo, softwaredescription, rating, totalRatings}) => {
     return (
@@ -8,9 +9,7 @@ export const SoftwareCard = ({softwareId, softwareName, softwareLogo, softwarede
                 <div className="col-md-9">
                     <div className="company_info">
                         <figure>
-                            <a href="reviews-page.html">
                                 <img src={softwareLogo} alt="" />
-                            </a>
                         </figure>
                         <h3>{softwareName}</h3>
                         <p dangerouslySetInnerHTML={{ __html: softwaredescription.slice(0, 200) + '...'}}></p>
@@ -26,7 +25,7 @@ export const SoftwareCard = ({softwareId, softwareName, softwareLogo, softwarede
                                 />
                             </span>
                         : null}
-                        <Link to={`/review/${softwareId}/${softwareName}`} className="btn_1 small">Read more</Link>
+                        <Link to={`/review/${softwareId}/${toSnakeCase(softwareName)}`} className="btn_1 small">Read more</Link>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ import { getSingleUser, sendContactUsMessage } from "../../../../redux/Actions/U
 import { useNavigate } from "react-router-dom"
 import { useAlert } from "react-alert";
 import { Loader } from "../../minor-components/loader/Loader"
+import { TopHeader } from "../../minor-components/top-heading-for-contact-pricing-etc/TopHeader"
 export const Contacts = () => {
 
     const [credentials, setcredentials] = useState({
@@ -60,12 +61,9 @@ export const Contacts = () => {
     return (
         <>
             <section className="hero_single general">
-                <div className="wrapper">
-                    <div className="container">
-                    <h1>Get in Touch with Bot Banchmark</h1>
-                    {/* <p>Vanno helps grow your business using customer reviews</p> */}
-                </div>
-                </div>
+                <TopHeader
+                    heading="Get in Touch with Bot Banchmark"
+                />
             </section>
             {/* /hero_single */}
             <div className="bg_color_1">

@@ -13,16 +13,14 @@ export const generateLightColor = (categoryName) => {
 }
 
 export const toSnakeCase = (input) => {
-    return input
-      .toLowerCase()
-      .replace(/\s+/g, '_')
-      .replace(/[^a-zA-Z0-9_]/g, ''); // Remove any characters other than letters, digits, and underscores
+    const cleanedInput = input?.toLowerCase()?.replace(/\s+/g, '_')?.replace(/[^a-zA-Z0-9_]/g, ''); // Remove any characters other than letters, digits, and underscores
+      
+    // Remove trailing underscores
+    return cleanedInput?.replace(/_+$/, '');
 }
 
 export const toTitleCase = (input) => {
-    return input
-      .replace(/_/g, ' ')
-      .replace(/\w\S*/g, (text) => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase());
+    return input?.replace(/_/g, ' ')?.replace(/\w\S*/g, (text) => text?.charAt(0)?.toUpperCase() + text?.substr(1)?.toLowerCase());
 }
 
 export const timeAgo = (timestamp) => {

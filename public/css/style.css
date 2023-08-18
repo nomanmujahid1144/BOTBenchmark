@@ -1523,6 +1523,14 @@ ul#additional_links li:after {
   -o-background-size: cover;
   background-size: cover;
 }
+.hero_single.office {
+  height: 500px;
+  background: #222 url(../img/office_1.jpg) center bottom no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 @media (max-width: 767px) {
   .hero_single.office {
     height: 450px;

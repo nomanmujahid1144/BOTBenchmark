@@ -13,6 +13,7 @@ import bottomArrow from '../../../../assets/bottom-arrow.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from 'react-paginate';
 import { Loader } from "../../minor-components/loader/Loader";
+import { toSnakeCase, toTitleCase } from "../../../../constants/helperFunction";
 
 export const SoftwarePage = () => {
 
@@ -62,7 +63,7 @@ export const SoftwarePage = () => {
                                         <figure>
                                             <img src={baseURL + softwareDetail?.softwareLogo} alt="" />
                                         </figure>
-                                        <small>{softwareDetail?.categoryId?.categoryName}</small>
+                                        <small><Link className="text-white" to={`/categories/${toSnakeCase(softwareDetail?.categoryId?.categoryName)}`}>{toTitleCase(softwareDetail?.categoryId?.categoryName)}</Link></small>
                                         <h1>{softwareDetail?.softwareName}</h1>
                                         <span className="rating">
                                             <StarRating
@@ -88,7 +89,7 @@ export const SoftwarePage = () => {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="box_general company_info">
-                                    <h3>{softwareDetail?.softwareName}</h3>
+                                    {/* <h3>{softwareDetail?.softwareName}</h3> */}
                                     <p dangerouslySetInnerHTML={{ __html: software?.description}}></p>
                                     <p>
                                         {software?.contacts?.location?.address ? 
