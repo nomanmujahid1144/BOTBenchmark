@@ -7,10 +7,9 @@ const softwareSchema = new mongoose.Schema({
     categoryId: {
         type: mongoose.Schema.Types.ObjectId, ref : 'Category'
     },
-    subcategory: {
-        type: String,
-        default: ''
-    },
+    subcategory: [{
+        type: String,  // Specify that subcategory is an array of strings
+    }],
     description: {
         type: String,
         default: ''

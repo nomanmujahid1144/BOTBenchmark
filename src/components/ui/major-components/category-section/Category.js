@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "../../../../redux/Actions/CategoryActions";
 import { baseURL } from "../../../../constants/baseURL";
-import { toSnakeCase } from "../../../../constants/helperFunction";
+import { toSnakeCase, toTitleCase } from "../../../../constants/helperFunction";
 import { Headings } from "../../minor-components/main-heading/Heading";
 import { CategoryCard } from "./CategoryCard";
 
@@ -33,7 +33,7 @@ export const Category = () => {
                             <CategoryCard
                                 key={category._id}
                                 goTo={`/categories/${toSnakeCase(category.categoryName)}`}
-                                categoryName={category.categoryName}
+                                categoryName={toTitleCase(category.categoryName)}
                                 categoryImage={baseURL + category.categoryImage}
                                 totalSoftwares={category.totalSoftwares}
                             />

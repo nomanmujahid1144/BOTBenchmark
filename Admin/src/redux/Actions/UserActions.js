@@ -32,6 +32,7 @@ export const adminLoginFun = (email, password, navigate, alert) => {
     });
     if (res.data.success) {
       dispatch(selectProgressBarState(false));
+      console.log(res.data?.token, "res.data?.token");
       dispatch(adminLogin(res.data?.token));
       localStorage.setItem("token", res.data?.token);
       alert.show("Logged In Successfully");

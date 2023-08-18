@@ -71,9 +71,12 @@ export const SoftwarePage = () => {
                                             <em>{software?.averageRating}/5.00 - based on {software?.feedbacks?.length} reviews</em>
                                         </span>
                                     </div>
-                                    <div className="col-lg-4 review_detail d-flex align-self-center justify-content-center justify-content-lg-end">
+                                    <div className="col-lg-4 review_detail d-flex align-self-center gap-3 justify-content-center justify-content-lg-end">
                                             <Link to={`/write-review/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-75">
                                                 Write a Review
+                                            </Link>
+                                            <Link to={`/botscore/upgrade/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-75">
+                                                Claim This Software
                                             </Link>
                                     </div>
                                 </div>
@@ -206,7 +209,7 @@ export const SoftwarePage = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="d-flex flex-column justify-content-between gap-2">
+                                    <div className="d-flex justify-content-between gap-2">
                                         <Link to={`/write-review/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-100">
                                             Write a Review
                                         </Link>

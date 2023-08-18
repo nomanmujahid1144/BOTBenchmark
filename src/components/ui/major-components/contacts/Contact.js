@@ -62,7 +62,6 @@ export const Contacts = () => {
             <section className="hero_single general">
                 <div className="wrapper">
                     <div className="container">
-                        {console.log(credentials, 'user')}
                     <h1>Get in Touch with Bot Banchmark</h1>
                     {/* <p>Vanno helps grow your business using customer reviews</p> */}
                 </div>

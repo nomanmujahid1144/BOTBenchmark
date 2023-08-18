@@ -35,6 +35,7 @@ function App() {
           <Route path="/review/:softwareId/:softwareName" element={<SoftwarePage  />} />
           <Route path="/write-review/:softwareId/:softwareName" element={<WriteReview  />} />
           <Route path="/evaluate/:spftwareId/:softwareName" element={<Evaluation />} />
+          <Route path="/botscore/upgrade/:spftwareId/:softwareName" element={<Evaluation />} />
           <Route path="/contact-us" element={<Contacts />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/faqs" element={<FAQ />} />

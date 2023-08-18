@@ -13,13 +13,19 @@ const App = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.ProfileReducer);
   useEffect(() => {
-    getToken();
-  }, [token]);
-  const getToken = async () => {
-    if (token) {
-      dispatch(adminLogin(token));
+    console.log(token, "first token");
+    const tokens = localStorage.getItem("token");
+    if (tokens) {
+      dispatch(adminLogin(tokens));
     }
-  };
+    // getToken();
+  }, [token]);
+  // const getToken = async () => {
+  //   console.log(token, "TOKEN");
+  //   if (token) {
+  //     dispatch(adminLogin(token));
+  //   }
+  // };
   return (
     <Routes>
       <Route path="auth/sign-in" element={<AuthLayoutLogin />} />

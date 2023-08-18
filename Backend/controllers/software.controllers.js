@@ -12,10 +12,11 @@ const mongoose = require('mongoose');
 
 
 exports.addSoftware = async (req, res, next) => {
-        try {
+    try {
+            console.log(req.query, 'req.query')
             const body = JSON.parse(req.query.values)
             body.description = he.decode(body.description);
-            console.log(body)
+            console.log(body.subcategory, 'SubCategory-herer-----============')
             if (!req.files) {
                 return res.status(200).json({
                     success: false,

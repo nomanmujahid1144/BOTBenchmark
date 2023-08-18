@@ -23,6 +23,7 @@ import SoftwareCard from "components/card/SoftwareCard";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { baseURL } from "constants/baseURL";
+import ReactSelect from "react-select";
 import {
   addSoftware,
   getSoftwares,
@@ -42,9 +43,9 @@ const SoftwareSchema = Yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  subcategory: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
+  subcategory: Yup.array()
+    // .min(2, "Too Short!")
+    // .max(50, "Too Long!")
     .required("Required"),
   // description: Yup.string()
   //   .min(2, "Too Short!")
@@ -115,6 +116,7 @@ const ColumnsTable = (props) => {
     onOpen();
     setEditItem([]);
     setDesceiprion("");
+    setSubCategory([]);
     setIsNewProduct(true);
   };
 
@@ -126,6 +128,23 @@ const ColumnsTable = (props) => {
     global.editId = software[0]._id;
     onOpen();
   };
+
+  const getSubCategoriesById = (id) => {
+    const subcaty = subcategories.filter(
+      (category) => category?.categoryId?._id === id
+    );
+    return subcaty[0]?.subcategory;
+  };
+
+  useEffect(() => {
+    if (editItem.length !== 0) {
+      const categoryId = editItem[0]?.categoryId?._id;
+      if (categoryId) {
+        const subcategoriesForCategoryId = getSubCategoriesById(categoryId);
+        setSubCategory(subcategoriesForCategoryId);
+      }
+    }
+  }, [editItem]);
 
   // Description Coding
   const handleEditorChange = (event, editor) => {
@@ -205,9 +224,7 @@ const ColumnsTable = (props) => {
                             ? `${editItem[0].categoryId._id}`
                             : "",
                         subcategory:
-                          editItem.length !== 0
-                            ? `${editItem[0].subcategory}`
-                            : "",
+                          editItem.length !== 0 ? editItem[0]?.subcategory : [],
                         // description:
                         //   editItem.length !== 0
                         //     ? `${editItem[0].description}`
@@ -402,34 +419,6 @@ const ColumnsTable = (props) => {
                                     component="div"
                                   />
                                 </div>
-
-                                {/* <div className=" mt-4 md:mr-2 md:mb-0 md:w-full">
-                                  <label
-                                    className="ml-1.5 text-sm font-medium text-navy-700 dark:text-white"
-                                    htmlFor="subcategory"
-                                  >
-                                    Software Sub Category*
-                                  </label>
-                                  <Field
-                                    className="mb-1 mt-3 flex h-10 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none"
-                                    as="select"
-                                    name="subcategory"
-                                  >
-                                    <option value="" hidden selected>
-                                      Select Category Here
-                                    </option>
-                                    {subcategory.map((catrgory, index) => (
-                                      <option key={index} value={catrgory}>
-                                        {catrgory}
-                                      </option>
-                                    ))}
-                                  </Field>
-                                  <ErrorMessage
-                                    className="text-xs font-thin text-red-600"
-                                    name="subcategory"
-                                    component="div"
-                                  />
-                                </div> */}
                               </div>
                               <div className="m-3">
                                 <div className="md:mr-2 md:mb-0 md:w-full">
@@ -439,21 +428,30 @@ const ColumnsTable = (props) => {
                                   >
                                     Software Sub Category*
                                   </label>
-                                  <Field
-                                    className="mb-1 mt-3 flex h-10 w-full items-center justify-center rounded-xl border bg-white/0 p-3 text-sm outline-none"
-                                    as="select"
-                                    // multiple
+                                  {console.log(subcategory, "subcategory")}
+                                  <ReactSelect
+                                    className="mb-1 mt-3 text-sm font-medium text-navy-700 dark:text-white"
+                                    isMulti
                                     name="subcategory"
-                                  >
-                                    <option value="" hidden selected>
-                                      Select Category Here
-                                    </option>
-                                    {subcategory.map((catrgory, index) => (
-                                      <option key={index} value={catrgory}>
-                                        {catrgory}
-                                      </option>
-                                    ))}
-                                  </Field>
+                                    options={subcategory?.map((category) => ({
+                                      value: category,
+                                      label: category,
+                                    }))}
+                                    value={values?.subcategory?.map(
+                                      (category) => ({
+                                        value: category,
+                                        label: category,
+                                      })
+                                    )}
+                                    onChange={(selectedOptions) =>
+                                      setFieldValue(
+                                        "subcategory",
+                                        selectedOptions?.map(
+                                          (option) => option.value
+                                        )
+                                      )
+                                    }
+                                  />
                                   <ErrorMessage
                                     className="text-xs font-thin text-red-600"
                                     name="subcategory"

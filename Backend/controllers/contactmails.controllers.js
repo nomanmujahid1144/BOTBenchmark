@@ -92,7 +92,7 @@ exports.submitResponse = async (req, res, next) => {
             const mailOptions = {
                 from: `"${process.env.SENDER_NAME}" <${process.env.EMAIL}>`, // sender address
                 to: contact?.emailId, // list of receivers
-                subject: "Response From Admin ✔", // Subject line
+                subject: "Response From BOTBenchmark ✔", // Subject line
                 html: output, // html body
             };
         
