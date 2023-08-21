@@ -1,5 +1,6 @@
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
+const Software = require("../models/Software");
 const { uploadImage } = require('../helpers/helpers')
 const { sendEmail } = require('../helpers/SendEmail')
 const bcrypt = require("bcrypt");
@@ -248,7 +249,45 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
+exports.addClaimedSoftwares = async (req, res, next) => {
+  try {
+    console.log(req.body, "update user");
 
+    const userId = req.user.data[1];
+
+    let body = req.body
+
+
+    const softwareId = req.body.softwareId; // Example software ID
+    const subscriptionDurationInDays = 30; // or 365 for 1 year
+
+    const software = await Software.findById(softwareId);
+    const subscriptionExpiry = new Date();
+    subscriptionExpiry.setDate(subscriptionExpiry.getDate() + subscriptionDurationInDays);
+
+    const user = await User.findById(userId); // Fetch user from database
+
+    if (!user) {
+      return res.status("User Update Failed", 400);
+    } else {
+      user.claimedSoftwares.push({
+          software: software._id,
+          subscriptionExpiry,
+      });
+
+      await user.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Software Saved Successfully",
+        data: user,
+      });
+    }
+
+  } catch (err) {
+    return next(new ErrorResponse(err, 400));
+  }
+};
 
 exports.checkUserMail = async (req, res, next) => {
   try {

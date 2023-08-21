@@ -11,12 +11,6 @@ function Layout(props) {
     
 
     useEffect(() => {
-        // if (params.pathname === '/register' || params.pathname === '/login' || params.pathname === '/reset-password' || params.pathname === '/confirm-password/:token' ) {
-        //     setIsAuth(false);
-        // }else {
-        //     // For other routes, set isAuth to true
-        //     setIsAuth(true);
-        // }
         const excludedRoutes = ['/register', '/login', '/reset-password', '/confirm-password'];
         const isExcludedRoute = excludedRoutes.some((route) => params.pathname.startsWith(route));
 
@@ -28,7 +22,7 @@ function Layout(props) {
             
         // </div>
         <>
-            {isAuth ? (<Navbar />) : null}
+            {isAuth   ? (<Navbar />) : null}
                 <main >{props.children}</main>
                 {isAuth ?
                     <>

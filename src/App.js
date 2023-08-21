@@ -19,6 +19,8 @@ import { Contacts } from "./components/ui/major-components/contacts/Contact";
 import { AboutUs } from "./components/ui/major-components/about-us/AboutUs";
 import { FAQ } from "./components/ui/major-components/faqs/FAQ";
 import { Pricing } from "./components/ui/major-components/pricing/Pricing";
+import { SuccessPage } from "./components/ui/major-components/extra-pages/SuccessPage";
+import { NotFound } from "./components/ui/major-components/extra-pages/404";
 
 import "./components/fontawesomeIcons"
 
@@ -36,11 +38,12 @@ function App() {
           <Route path="/review/:softwareId/:softwareName" element={<SoftwarePage  />} />
           <Route path="/write-review/:softwareId/:softwareName" element={<WriteReview  />} />
           <Route path="/evaluate/:spftwareId/:softwareName" element={<Evaluation />} />
-          <Route path="/botscore/upgrade/:spftwareId/:softwareName" element={<Pricing />} />
+          <Route path="/botscore/upgrade/:softwareId/:softwareName" element={<Pricing />} />
+          <Route path="/transection" element={<SuccessPage />} />
           <Route path="/contact-us" element={<Contacts />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/faqs" element={<FAQ />} />
-          {/* <Route path="/blogs" element={<Blogs />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
   );

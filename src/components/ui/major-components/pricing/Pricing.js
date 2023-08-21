@@ -1,9 +1,13 @@
 import { TopHeader } from "../../minor-components/top-heading-for-contact-pricing-etc/TopHeader"
 import Pricify from '@chargebee/atomicpricing';
 import { useEffect } from 'react';
+import { useParams } from "react-router-dom";
 
 export const Pricing = () => {
 
+    const params = useParams();
+    const softwareId = params.softwareId;
+    localStorage.setItem('softwareId', softwareId)
     useEffect(() => {
         Pricify.init();
       }, []);
@@ -15,7 +19,7 @@ export const Pricing = () => {
                     headding="Pricing"
                 />
             </section>
-            {/* <div className="container margin_tabs">
+            {/* <div className="container margin_tabs mt-5">
                 <div id="tabs" className="tabs">
                     <nav>
                         <ul>
@@ -45,30 +49,30 @@ export const Pricing = () => {
                                 <div className="col-lg-4">
                                     <div className="box_pricing">
                                         <h4>1 Month</h4>
-                                        <p>
-                                        Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
-                                        scaevola sea. Et nec tantas accusamus salutatus, sit commodo
-                                        veritus te, erat legere fabulas has ut.
-                                        </p>
+                                            <p>
+                                            Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod
+                                            scaevola sea. Et nec tantas accusamus salutatus, sit commodo
+                                            veritus te, erat legere fabulas has ut.
+                                            </p>
                                         <ul>
-                                        <li>
-                                            <strong>Lorem</strong> consulatu qui ne
-                                        </li>
-                                        <li>
-                                            <strong>Erat legere</strong> fabulas has ut
-                                        </li>
-                                        <li>
-                                            <strong>Constituto</strong> deterruisset
-                                        </li>
-                                        <li>
-                                            <strong>Omnis</strong> justo gloriatur
-                                        </li>
+                                            <li>
+                                                <strong>Lorem</strong> consulatu qui ne
+                                            </li>
+                                            <li>
+                                                <strong>Erat legere</strong> fabulas has ut
+                                            </li>
+                                            <li>
+                                                <strong>Constituto</strong> deterruisset
+                                            </li>
+                                            <li>
+                                                <strong>Omnis</strong> justo gloriatur
+                                            </li>
                                         </ul>
                                         <hr />
-                                        <div className="price">
-                                        <sup>$</sup>9.99<em>/mo</em>
+                                        <div className="price" onClick={() => handleCheckOut(9.99)}>
+                                            <sup>$</sup>9.99<em>/mo</em>
                                         </div>
-                                        <a href="register.html">Create Account</a>
+                                        <a className="btn cursor-pointer" onClick={() => handleCheckOut(9.99)}>Create Account</a>
                                     </div>
                                 </div>
                                 <div className="col-lg-4">
@@ -298,10 +302,19 @@ export const Pricing = () => {
 
                 </div>
             </div> */}
-            <div id="pricify-hosted-pricing-page"
+
+            {/* Live Coding */}
+            {/* <div id="pricify-hosted-pricing-page"
                 data-pricify-site="01H854RDJ9A82QNFE0X1HQ65AT"
                 data-pricify-pricingpage="01H854RE2KDSH637DX1T63DD4D"
                 data-pricify-viewport-defaultheight="795.1875px">    
+            </div> */}
+            {/* Test Coding */}
+            <div
+                id="pricify-hosted-pricing-page"
+                data-pricify-site="01H86GPHRFVP32Z1G8RGTG3HF5"
+                data-pricify-pricingpage="01H86GPJDYNPX7ARQYGSMTJMW6"
+                data-pricify-viewport-defaultheight="795.390625px">
             </div>
         </main>
     )

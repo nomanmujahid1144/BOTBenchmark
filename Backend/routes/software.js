@@ -13,6 +13,8 @@ const {
   deleteSoftwares,
   updateSoftware,
   addDescriptionImage,
+  CreateCheckoutForNewSubscription,
+  // RetrieveHostedPage,
   uploadImage,
   getdiscountproducts,
   getFeatureProducts,
@@ -35,6 +37,8 @@ router.delete("/deletesoftwares", deleteSoftwares);
 router.patch("/updatesoftware", updateSoftware);
 router.post("/adddescriptionimage", addDescriptionImage);
 
+router.post("/createsubscription", CreateCheckoutForNewSubscription);
+// router.get("/RetrieveHostedPage", RetrieveHostedPage);
 
 router.get("/getdiscountproducts", getdiscountproducts);
 router.get("/getfeatureproducts", getFeatureProducts);

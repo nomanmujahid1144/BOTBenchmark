@@ -133,6 +133,29 @@ export const updatePassword = (password, id,  navigate, alert) => {
   };
 };
 
+export const addClaimedSoftwares = (softwareId, navigate, alert) => {
+  return async (dispatch) => {
+    console.log("addClaimedSoftwares action - softwareId:", softwareId);
+    dispatch(selectProgressBarState(true));
+    const res = await axiosInstance.patch("/api/v1/user/addclaimedsoftwares",{softwareId} ,{
+      headers: {
+        "Authorization" : localStorage.getItem('token') 
+      }
+    });
+      if (res.data.success) {
+        dispatch(selectProgressBarState(false));
+        localStorage.removeItem('softwareId');
+        setTimeout(() => {
+          // navigate(`/review/${softwareId}/google`);
+          // window.location.href = `/review/${softwareId}/google`;
+        },3000)
+    } else {
+        dispatch(selectProgressBarState(false));
+        alert.show("Something Went Wrong");
+    }
+  };
+};
+
 export const getSingleUser = (navigate, alert) => {
   return async (dispatch) => {
     dispatch(selectProgressBarState(true));

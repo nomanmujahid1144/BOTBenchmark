@@ -65,3 +65,23 @@ export const getSingleSoftwares = (softwareId) => {
   };
 };
 
+
+export const createSubscriber = (price, navigate, alert) => {
+  return async (dispatch) => {
+    dispatch(selectProgressBarState(true));
+    const res = await axiosInstance.post("/api/v1/software/createsubscription", {
+        price: price
+    });
+    if (res.data.success) {
+        console.log()
+        // setTimeout(() => {
+        //     dispatch(selectProgressBarState(false));
+        //     alert.show(res.data.message.toString());
+        //     navigate("/login");
+        // },500)
+    } else {
+      // dispatch(selectProgressBarState(false));
+      // alert.show("Something Went Wrong");
+    }
+  };
+};

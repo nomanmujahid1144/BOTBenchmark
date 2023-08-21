@@ -4,6 +4,7 @@ const {
   userLogin,
   userSignup,
   userSocialSignup,
+  addClaimedSoftwares,
   idVerification,
   addUserNumber,
   forgetPassword,
@@ -24,6 +25,7 @@ const checkAuth = require("../middleware/check-auth");
 
 router.post("/login", userLogin);
 router.post("/signup", userSignup);
+router.patch("/addclaimedsoftwares", checkAuth, addClaimedSoftwares);
 router.patch("/forgetpassword", forgetPassword);
 router.patch("/verifyjwttoken", VerifyJWTToken);
 router.patch("/updatepassword", updateUserPassword);
