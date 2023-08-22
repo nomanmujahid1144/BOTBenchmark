@@ -96,3 +96,58 @@ exports.GetLatestReviews = async (req, res, next) => {
     });
   }
 }
+exports.GetReviewaCount = async (req, res, next) => {
+  try {
+
+    const userId = req.user.data[1];
+    const ReviewsCount = await FeedBack.countDocuments({userId: mongoose.Types.ObjectId(userId)})
+
+    console.log(ReviewsCount)
+    
+    return res.status(200).json({
+      success: true,
+      message: 'Latest Reviews',
+      data: ReviewsCount,
+    });
+  } catch (error){
+    return res.status(500).json({
+      success: false,
+      message: 'Error fetching reviews',
+      error: error.message,
+    });
+  }
+}
+exports.GetSingleUserReviews = async (req, res, next) => {
+  try {
+
+    const userId = req.user.data[1];
+    const Reviews = await FeedBack.find({ userId: mongoose.Types.ObjectId(userId) }).populate('softwareId', {
+      contacts: 0,
+      _id: 0,
+      percentageOfEachStart: 0,
+      subcategory: 0,
+      description: 0,
+      feedbacks: 0,
+      totalRatings: 0,
+      averageRating: 0,
+      categoryId: 0,
+      createdAt: 0,
+      updatedAt: 0,
+      __v: 0
+    })
+
+    console.log(Reviews)
+    
+    return res.status(200).json({
+      success: true,
+      message: 'Single User Reviews',
+      data: Reviews,
+    });
+  } catch (error){
+    return res.status(500).json({
+      success: false,
+      message: 'Error fetching reviews',
+      error: error.message,
+    });
+  }
+}

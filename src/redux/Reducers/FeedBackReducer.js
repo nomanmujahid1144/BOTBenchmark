@@ -2,6 +2,7 @@ import { ACTION_TYPES } from "../ActionTypes/ActionTypes";
 
 const initialState = {
     feedback: {},
+    feedbackCount: 0,
     feedbacks: [],
     latestFeedbacks :[]
 };
@@ -18,6 +19,18 @@ const feedBackReducer = (state = initialState, action) => {
             return {
                 ...state,
                 latestFeedbacks: action.payload,
+            };
+        }
+        case ACTION_TYPES.GET_USERS_REVIEWS_COUNT: {
+            return {
+                ...state,
+                feedbackCount: action.payload,
+            };
+        }
+        case ACTION_TYPES.GET_USERS_REVIEWS: {
+            return {
+                ...state,
+                feedbacks: action.payload,
             };
         }
         default: {

@@ -133,6 +133,53 @@ export const updatePassword = (password, id,  navigate, alert) => {
   };
 };
 
+export const changeUserPassword = (password, navigate, alert) => {
+  return async (dispatch) => {
+    dispatch(selectProgressBarState(true));
+    const res = await axiosInstance.patch("/api/v1/user/changeUserPassword", {
+        password
+    }, {
+      headers: {
+        "Authorization": localStorage.getItem('token')
+      }
+    });
+      if (res.data.success) {
+          setTimeout(() => {
+              alert.show('Password Succesfully Changed');
+                dispatch(selectProgressBarState(false));
+        },500)
+    } else {
+        dispatch(selectProgressBarState(false));
+        alert.show("Something Went Wrong");
+    }
+  };
+};
+
+export const updateUser = (formData, values, alert) => {
+  return async (dispatch) => {
+    dispatch(selectProgressBarState(true));
+    console.log(formData, 'EBJHB')
+    const res = await axiosInstance.patch("/api/v1/user/updateuser", formData, {
+      headers: {
+        "Authorization": localStorage.getItem('token'),
+        "Content-Type": "multipart/form-data",
+      },
+      params: {
+        values : JSON.stringify(values)
+      }
+    });
+      if (res.data.success) {
+          setTimeout(() => {
+            alert.show('Update Information Successfully');
+            dispatch(selectProgressBarState(false));
+        },500)
+    } else {
+        dispatch(selectProgressBarState(false));
+        alert.show("Something Went Wrong");
+    }
+  };
+};
+
 export const addClaimedSoftwares = (softwareId, navigate, alert) => {
   return async (dispatch) => {
     console.log("addClaimedSoftwares action - softwareId:", softwareId);
@@ -166,6 +213,7 @@ export const getSingleUser = (navigate, alert) => {
         }
       });
       if (res.data.success) {
+        dispatch(selectProgressBarState(false));
           dispatch({
             type: ACTION_TYPES.GET_SINGLE_USER,
             payload: res.data.data,

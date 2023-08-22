@@ -494,6 +494,34 @@ exports.updateUserPassword = async (req, res, next) => {
   }
 };
 
+exports.changeUserPassword = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password, salt)
+    const userId = req.user.data[1];
+
+    let userEmail = await User.updateOne(
+      { _id: mongoose.Types.ObjectId(userId) },
+      { password: hash }
+    );
+    if (userEmail.nModified < 1) {
+      return res.status(200).json({
+        success: false,
+        message: "Password Update Failed",
+        data: null,
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Password Updated Successfully",
+      data: null,
+    });
+  } catch (err) {
+    return next(new ErrorResponse(err, 400));
+  }
+};
+
 exports.idVerification = async (req, res, next) => {
 
   console.log(req.user.data[1] + " Id Verification User");
@@ -579,7 +607,9 @@ exports.updateUser = async (req, res, next) => {
 
     const userId = req.user.data[1];
 
-    let body = req.body
+    let body = JSON.parse(req.query.values);
+    console.log(body)
+    console.log(req.files)
 
     if (req.files) {
       const profilePhotoUploaded = await uploadImage(req.files.profilePhoto, next)
@@ -589,7 +619,7 @@ exports.updateUser = async (req, res, next) => {
 
     const updatedUser = await User.findOneAndUpdate(
       { _id: mongoose.Types.ObjectId(userId) },
-      req.body
+      body
       ,
       { new: true }
     );

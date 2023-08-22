@@ -3,16 +3,18 @@ import StarRating from "./StarRating"
 
 
 
-export const ReviewCard = ({ feedback, reviewTitle, rating, userName, date }) => {
+export const ReviewCard = ({ feedback, ImageShow, Image, reviewTitle, rating, userName, date }) => {
     const dynamicTimeAgo = timeAgo(date);
 
     return (
         <div className="review_card">
             <div className="row">
                 <div className="col-md-2 user_info">
-                    <figure>
-                        <img src="img/avatar1.jpg" alt="" />
-                    </figure>
+                        <figure>
+                            {ImageShow ? 
+                                <img src={Image} style={{ widows: '60px', height: '60px', borderRadius: '7px'}} alt="" />
+                            : null}
+                        </figure>
                     <h5>{userName}</h5>
                 </div>
                 <div className="col-md-10 review_content">

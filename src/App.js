@@ -11,8 +11,6 @@ import { ChangePassword } from "./components/ui/major-components/credentials/Cha
 import { AllCategories } from "./components/ui/major-components/category-page/AllCategories";
 import { Filters } from "./components/ui/minor-components/filters/Filter";
 import { SoftwarePage } from "./components/ui/major-components/software/SoftwarePage";
-import { Blogs } from "./components/ui/major-components/blogs/Blog";
-import { Checkout } from "./components/ui/major-components/cart/Checkout";
 import { Evaluation } from "./components/ui/major-components/evaluation/Evaluate";
 import { WriteReview } from "./components/ui/minor-components/ratings/WriteReview";
 import { Contacts } from "./components/ui/major-components/contacts/Contact";
@@ -21,6 +19,9 @@ import { FAQ } from "./components/ui/major-components/faqs/FAQ";
 import { Pricing } from "./components/ui/major-components/pricing/Pricing";
 import { SuccessPage } from "./components/ui/major-components/extra-pages/SuccessPage";
 import { NotFound } from "./components/ui/major-components/extra-pages/404";
+import { ProfileSetting } from "./components/ui/major-components/profile/ProfileSetting";
+import { UserReviews } from "./components/ui/major-components/profile/UserReviews";
+import { UserSoftware } from "./components/ui/major-components/profile/UserSoftwares";
 
 import "./components/fontawesomeIcons"
 
@@ -33,6 +34,9 @@ function App() {
           <Route path="/register" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/confirm-password/:token" element={<ChangePassword />} />
+          <Route path="/profile/setting" element={<ProfileSetting />} />
+          <Route path="/profile/reviews" element={<UserReviews />} />
+          <Route path="/profile/mysoftwares" element={<UserSoftware />} />
           <Route path="/categories" element={<AllCategories />} />
           <Route path="/categories/:category" element={<Filters />} />
           <Route path="/review/:softwareId/:softwareName" element={<SoftwarePage  />} />

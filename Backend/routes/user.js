@@ -12,6 +12,7 @@ const {
   getSingleUser,
   checkUserMail,
   updateUserPassword,
+  changeUserPassword,
   updateUser,
   updateUserStatus,
   afterVerification,
@@ -29,6 +30,7 @@ router.patch("/addclaimedsoftwares", checkAuth, addClaimedSoftwares);
 router.patch("/forgetpassword", forgetPassword);
 router.patch("/verifyjwttoken", VerifyJWTToken);
 router.patch("/updatepassword", updateUserPassword);
+router.patch("/changeUserPassword", checkAuth, changeUserPassword);
 
 router.post("/usersocialsignup", userSocialSignup);
 router.patch("/addusernumber", checkAuth, addUserNumber);

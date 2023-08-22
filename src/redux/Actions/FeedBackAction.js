@@ -55,3 +55,53 @@ export const getLatestReviews = () => {
     }
   };
 };
+
+export const getUsersReviewsCount = () => {
+  return async (dispatch) => {
+    dispatch(selectProgressBarState(true));
+    const res = await axiosInstance.get("/api/v1/feedback/reviews/count", {
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      }
+    });
+    if (res.data.success === true) {
+      dispatch(selectProgressBarState(false));
+      dispatch({
+        type: ACTION_TYPES.GET_USERS_REVIEWS_COUNT,
+        payload: res.data.data,
+      });
+    } else {
+      dispatch(selectProgressBarState(false));
+      alert.show("No latest Review Found");
+      dispatch({
+        type: ACTION_TYPES.GET_USERS_REVIEWS_COUNT,
+        payload: [],
+      });
+    }
+  };
+};
+
+export const getUsersReviews = () => {
+  return async (dispatch) => {
+    dispatch(selectProgressBarState(true));
+    const res = await axiosInstance.get("/api/v1/feedback/reviews", {
+      headers: {
+        'Authorization': localStorage.getItem('token')
+      }
+    });
+    if (res.data.success === true) {
+      dispatch(selectProgressBarState(false));
+      dispatch({
+        type: ACTION_TYPES.GET_USERS_REVIEWS,
+        payload: res.data.data,
+      });
+    } else {
+      dispatch(selectProgressBarState(false));
+      alert.show("No latest Review Found");
+      dispatch({
+        type: ACTION_TYPES.GET_USERS_REVIEWS,
+        payload: [],
+      });
+    }
+  };
+};

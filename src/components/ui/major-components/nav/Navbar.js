@@ -125,13 +125,6 @@ export const Navbar = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-  }
-
-
-
-
   return (
       <header className={`header ${isSticky ? 'sticky' : 'menu_fixed'}`}>
         
@@ -169,16 +162,19 @@ export const Navbar = () => {
           <li>
             <div className="dropdown dropdown-user">
               <a href="#0" className="logged" data-bs-toggle="dropdown">
-                <img src="img/avatar4.jpg" alt="" />
+                <img src="/img/avatar4.jpg" alt="" />
               </a>
               <div className="dropdown-menu">
                 <ul>
-                  {/* <li>
-                    <a href="user-dashboard.html">My Reviews</a>
+                  <li>
+                    <Link to='/profile/reviews'>My Reviews</Link>
                   </li>
                   <li>
-                    <a href="user-settings.html">My Settings</a>
-                  </li> */}
+                    <Link to='/profile/setting' >My Profile</Link>
+                  </li>
+                  <li>
+                    <Link to='/profile/mysoftwares' >Claimed Softwares</Link>
+                  </li>
                   <li>
                     <a style={{ cursor: 'pointer' }}
                       onClick={() => {
