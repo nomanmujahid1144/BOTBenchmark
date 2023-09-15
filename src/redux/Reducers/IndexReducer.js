@@ -5,6 +5,7 @@ import usersReducer from './UserReducers';
 import subCategoryReducer from './SubCategoryReducer';
 import softwareReducer from './SoftwareReducer';
 import feedBackReducer from './FeedBackReducer';
+import claimedSoftwareReducer from './ClaimedSoftwaresReducer';
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     usersReducer,
     subCategoryReducer,
     softwareReducer,
+    claimedSoftwareReducer,
     feedBackReducer,
 });
 

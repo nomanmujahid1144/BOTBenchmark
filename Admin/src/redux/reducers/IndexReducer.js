@@ -5,6 +5,7 @@ import categoryReducer from "./CategoryReducer";
 import subcategoryReducer from "./SubCategoryReducer";
 import softwareReducer from "./SoftwareReducer";
 import customerMessagesReducer from "./CustomerMessagesReducer";
+import claimedSoftwareReducer from "./ClaimedSoftwaresReducer";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   subcategoryReducer,
   softwareReducer,
   customerMessagesReducer,
+  claimedSoftwareReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

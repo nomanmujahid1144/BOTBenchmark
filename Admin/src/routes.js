@@ -6,6 +6,7 @@ import Category from "views/admin/category/Category";
 import SubCategory from "views/admin/category/SubCategory";
 import Softwares from "views/admin/category/Softwares";
 import Message from "views/admin/message/Message";
+import ClaimSoftware from "views/admin/claimed-software/Claim-Software";
 
 // Icon Imports
 import {
@@ -50,6 +51,13 @@ const routes = [
     path: "messages",
     icon: <MdMessage className="h-6 w-6" />,
     component: <Message />,
+  },
+  {
+    name: "Claimed Software",
+    layout: "/admin",
+    path: "claimed-software",
+    icon: <MdProductionQuantityLimits className="h-6 w-6" />,
+    component: <ClaimSoftware />,
   },
 ];
 export default routes;

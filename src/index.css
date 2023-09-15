@@ -86,3 +86,13 @@ object {
     margin-top: 100px;
   }
 }
+
+
+.PhoneInputInput{
+  border: none;
+}
+.PhoneInputInput:focus {
+  border: none !important;
+  outline: none !important;
+  --tw-ring-shadow : none
+}

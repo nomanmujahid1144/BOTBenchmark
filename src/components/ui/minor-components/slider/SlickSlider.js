@@ -29,6 +29,7 @@ const PrevArrow = (props) => {
         />
     );
 }
+
 var settings = {
     dots: false,
     infinite: false,

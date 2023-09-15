@@ -45,3 +45,10 @@ export const timeAgo = (timestamp) => {
     return `${monthsAgo} months ago`;
   }
 }
+
+
+export const isValidFileType = async (file) => {
+  const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+
+  return allowedTypes.includes(file.type);
+}

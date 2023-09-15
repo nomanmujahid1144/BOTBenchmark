@@ -1,24 +1,20 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux";
-import { addClaimedSoftwares } from "../../../../redux/Actions/UserActions";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
+import { getHostedURLData } from "../../../../redux/Actions/ClaimedSoftwares";
 
 export const SuccessPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const alert = useAlert();
-    const softwareId = localStorage.getItem('softwareId');
 
     useEffect(() => {
-        console.log("SuccessPage useEffect - softwareId:", softwareId);
-        if (softwareId) {
-            localStorage.removeItem('softwareId');
-            dispatch(addClaimedSoftwares(softwareId, navigate, alert))
-        } else {
-            navigate('/not-found')
-        }
-
+        // Parse the query parameters
+        const searchParams = new URLSearchParams(location.search);
+        const id = searchParams.get('id');
+        dispatch(getHostedURLData(id, navigate, alert));
     }, [])
 
     return (

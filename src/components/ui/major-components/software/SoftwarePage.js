@@ -73,10 +73,10 @@ export const SoftwarePage = () => {
                                         </span>
                                     </div>
                                     <div className="col-lg-4 review_detail d-flex align-self-center gap-3 justify-content-center justify-content-lg-end">
-                                            <Link to={`/write-review/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-75">
+                                            <Link to={`/write-review/${software?._id}/${toSnakeCase(softwareDetail?.softwareName)}`} className="btn_top d-block text-center w-75">
                                                 Write a Review
                                             </Link>
-                                            <Link to={`/botscore/upgrade/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-75">
+                                            <Link to={`/botscore/upgrade/${software?._id}/${toSnakeCase(softwareDetail?.softwareName)}`} className="btn_top d-block text-center w-75">
                                                 Claim This Software
                                             </Link>
                                     </div>
@@ -211,7 +211,7 @@ export const SoftwarePage = () => {
                                         </div>
                                     </div>
                                     <div className="d-flex justify-content-between gap-2">
-                                        <Link to={`/write-review/${software?._id}/${softwareDetail?.softwareName}`} className="btn_top d-block text-center w-100">
+                                        <Link to={`/write-review/${software?._id}/${toSnakeCase(softwareDetail?.softwareName)}`} className="btn_top d-block text-center w-100">
                                             Write a Review
                                         </Link>
                                     </div>

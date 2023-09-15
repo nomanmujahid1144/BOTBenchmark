@@ -24,7 +24,7 @@ export const LatestReviews = () => {
             <div className="container margin_60">
               <Headings
                 Heading={"Latest Reviews"}
-                isSubHeading={true}
+                isSubHeading={false}
                 subHeading="Cum doctus civibus efficiantur in imperdiet deterruisset."
                 goto={"/goto"}
               />

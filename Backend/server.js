@@ -56,6 +56,7 @@ const about = require("./routes/about");
 const category = require("./routes/category");
 const subcategory = require("./routes/subcategory");
 const software = require("./routes/software");
+const claimsoftwares = require("./routes/claimsoftwares");
 const feedback = require("./routes/feedback");
 const contactmails = require("./routes/contactmails");
 
@@ -77,6 +78,8 @@ app.use("/api/v1/about", about);
 app.use("/api/v1/category", category);
 app.use("/api/v1/subcategory", subcategory);
 app.use("/api/v1/software", software);
+app.use("/api/v1/claimed-software", claimsoftwares);
+app.use("/api", claimsoftwares);
 app.use("/api/v1/feedback", feedback);
 app.use("/api/v1/feedback", feedback);
 app.use("/api/v1/contacts", contactmails);
@@ -89,7 +92,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 1212;
+const PORT = process.env.PORT || 8080;
 
 const server = http.listen(PORT, console.log(`server running on port ${PORT}`));
 

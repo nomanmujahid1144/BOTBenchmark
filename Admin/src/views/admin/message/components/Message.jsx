@@ -43,7 +43,6 @@ const ColumnsTable = () => {
   };
 
   const handleReply = async (id) => {
-    console.log(id, "ID");
     setYourMessage({
       yourmessage: "",
     });
@@ -181,6 +180,8 @@ const ColumnsTable = () => {
                                 </td>
                                 <td class="px-6 py-4">
                                   <CardMenu
+                                    reply={true}
+                                    approved={false}
                                     handleDeleteMessage={handleDelete}
                                     handleReplyMessage={handleReply}
                                     id={message?._id}

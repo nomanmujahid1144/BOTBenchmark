@@ -24,7 +24,7 @@ export const Category = () => {
                 <div className="container margin_60_35">
                     <Headings
                         Heading={"Top Categories"}
-                        isSubHeading={true}
+                        isSubHeading={false}
                         subHeading="Cum doctus civibus efficiantur in imperdiet deterruisset."
                         goto={"/categories"}
                     />

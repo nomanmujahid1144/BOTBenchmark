@@ -23,6 +23,27 @@ exports.uploadImage = async (image, next) => {
   });
 }
 
+exports.uploadFile = async (file, next) => {
+  return new Promise((resolve, reject) => {
+
+    if (!file.mimetype.startsWith("application") && !file.mimetype.startsWith("pdf")  && !file.mimetype.startsWith("text") ) {
+      return next(new ErrorResponse(`Please upload a file`, 400));
+    }
+
+    const path = `${process.env.FILES_UPLOAD_PATH}/${Math.floor(
+      Math.random() * 100000 + 1
+    )}.${file.name.replace(/\s/g, "")}`;
+    file.mv(path, (err) => {
+      if (err) {
+        console.error(err);
+        return next(new ErrorResponse(`Problem with file upload`, 400)); // next func error response
+      }
+      resolve({
+        photoPath: path.slice(8),
+      });
+    });
+  });
+}
 
 
 exports.calculateAverage = async (ratings) => {

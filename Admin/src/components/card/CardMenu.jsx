@@ -2,6 +2,7 @@ import React from "react";
 import Dropdown from "components/dropdown";
 import { AiOutlineMessage, AiOutlineDelete } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
+import { IoMdEye } from "react-icons/io";
 
 function CardMenu(props) {
   const { transparent, handleDeleteMessage, handleReplyMessage, id } = props;
@@ -33,15 +34,30 @@ function CardMenu(props) {
       classNames={`${transparent ? "top-8" : "top-11"} right-0 w-max`}
       children={
         <div className="z-50 w-max rounded-xl bg-white py-3 px-4 text-sm shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-          <p
-            onClick={handleReply}
-            className="hover:text-black flex cursor-pointer items-center gap-2 text-gray-600 hover:font-medium"
-          >
-            <span>
-              <AiOutlineMessage />
-            </span>
-            Reply
-          </p>
+          {props.reply ? (
+            <p
+              onClick={handleReply}
+              className="hover:text-black flex cursor-pointer items-center gap-2 text-gray-600 hover:font-medium"
+            >
+              <span>
+                <AiOutlineMessage />
+              </span>
+              Reply
+            </p>
+          ) : null}
+          {props.approved ? (
+            <>
+              <p
+                onClick={handleReply}
+                className="hover:text-black flex cursor-pointer items-center gap-2 text-gray-600 hover:font-medium"
+              >
+                <span>
+                  <IoMdEye />
+                </span>
+                View
+              </p>
+            </>
+          ) : null}
           <p
             onClick={handleDelete}
             className="hover:text-black mt-2 flex cursor-pointer items-center gap-2 pt-1 text-red-600 hover:font-medium"

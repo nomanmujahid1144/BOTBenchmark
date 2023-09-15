@@ -10,9 +10,6 @@ const fs            = require('fs');
 const sharp            = require('sharp');
 const mongoose = require('mongoose');
 
-var chargebee = require("chargebee");
-chargebee.configure({site : process.env.SITE , api_key : process.env.CHARGEBEE_API_KEY})
-
 exports.addSoftware = async (req, res, next) => {
     try {
             console.log(req.query, 'req.query')
@@ -257,52 +254,6 @@ exports.updateSoftware = async (req, res, next) => {
     }
 }
 
-exports.CreateCheckoutForNewSubscription = async (req, res, next) => {
-    try {
-        console.log('HERE')
-        console.log(req.body)
-        const price = req.body.price;
-
-        chargebee.item.retrieve("Claim-Profile").request(function(error,result) {
-            if(error){
-              //handle error
-              console.log(error);
-            }else{
-                console.log(result);
-                var item = result.item;
-                chargebee.hosted_page.checkout_new_for_items({
-                    subscription_items : [
-                      {
-                        item_price_id : "Claim-Profile-USD-Monthly",
-                        unit_price : 9.99 * 100
-                      }]
-                  }).request(function(error,result) {
-                    if(error){
-                      //handle error
-                      console.log(error);
-                    }else{
-                        console.log(result);
-                        var hosted_page = result.hosted_page;
-                    }
-                  });
-            }
-          });
-
-        
-
-
-            // if (!addedsoftware) {
-            //     return next(new ErrorResponse('add Software failed', 400))
-            // }
-            // return res.status(200).json({
-            //     success: true,
-            //     data: addedsoftware
-            // })
-        }
-        catch (err) {
-            return next(new ErrorResponse(err, 400))
-        }
-} 
 
 exports.deleteSoftwares = async (req, res, next) => {
     try {
