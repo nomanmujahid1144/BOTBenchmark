@@ -1225,6 +1225,10 @@ ul#additional_links li:after {
   color: #fff;
   margin: 0;
 }
+.hero_single .wrapper h1 {
+  color: #fff;
+  margin: 0;
+}
 .hero_single .wrapper p {
   font-weight: 300;
   margin: 10px 0 0 0;
@@ -1379,6 +1383,11 @@ ul#additional_links li:after {
   background-color: rgba(0, 0, 0, 0.6);
 }
 .hero_single.version_3 .wrapper h3 {
+  font-size: 52px;
+  font-size: 3.25rem;
+  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+.hero_single.version_3 .wrapper h1 {
   font-size: 52px;
   font-size: 3.25rem;
   text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);

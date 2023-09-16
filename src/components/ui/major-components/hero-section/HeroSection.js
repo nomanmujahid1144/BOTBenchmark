@@ -50,7 +50,7 @@ export const HeroSection = () => {
         <section className="hero_single version_3">
             <div className="wrapper">
                 <div className="container" style={{textAlign : 'center'}}>
-                    <h3>Find Softwares you can trust.</h3>
+                    <h1>Explore and review the best AI tools</h1>
                     {/* <p>Check Ratings of Businesses, Read Reviews &amp; Buy</p> */}
                     <div className="row justify-content-center mt-3">
                         <div className="col-lg-9">

@@ -27,12 +27,13 @@ import "./components/fontawesomeIcons"
 
 function App() {
   return (
-      <Layout >
-        <Routes >
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+      <Routes >
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Index />} />
           <Route path="/confirm-password/:token" element={<ChangePassword />} />
           <Route path="/profile/setting" element={<ProfileSetting />} />
           <Route path="/profile/reviews" element={<UserReviews />} />
@@ -47,9 +48,8 @@ function App() {
           <Route path="/contact-us" element={<Contacts />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/faqs" element={<FAQ />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
+        </Route>    
+      </Routes>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Footer } from "../ui/major-components/footer/Footer";
 import { Navbar } from "../ui/major-components/nav/Navbar";
 import { NewsLetter } from "../ui/minor-components/newsletter/NewsLetter";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 function Layout(props) {
     
@@ -18,18 +18,19 @@ function Layout(props) {
     }, [params.pathname]);
 
     return (
-        // <div className="">
-            
-        // </div>
         <>
-            {isAuth   ? (<Navbar />) : null}
+            {/* {isAuth   ? (<Navbar />) : null}
                 <main >{props.children}</main>
                 {isAuth ?
-                    <>
-                        {/* <NewsLetter /> */}
+                <>
+                        <Outlet />
                         <Footer />
                     </>
-            : null}
+                : null} */}
+            
+            <Navbar />
+            <Outlet />
+            <Footer />
         </>
     )
 }
